@@ -16,6 +16,16 @@ module ActiveRecordReadonlyAdapter
     super
   end
 
+  def update_column(name, value)
+    _raise_readonly_record_error if readonly?
+    super
+  end
+
+  def update_columns(attributes)
+    _raise_readonly_record_error if readonly?
+    super
+  end
+
   private
 
   def readonly?
