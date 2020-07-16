@@ -4,10 +4,9 @@ module DatabaseConnectionResetExtension
   extend ActiveSupport::Concern
 
   included do
-    extend ClassMethodsWrapper
   end
 
-  module ClassMethodsWrapper
+  module ClassMethods
     # ActiveRecord::Base.configurations is different with Rails.application.config.database_configuration
     def reset_database_connection(namespace: nil, multiple: false)
       config = begin
